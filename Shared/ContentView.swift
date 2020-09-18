@@ -11,7 +11,17 @@ struct ContentView: View {
     @Binding var document: SwiftUIBug1Document
 
     var body: some View {
-        TextEditor(text: $document.text)
+        HStack {
+            TextEditor(text: $document.text)
+
+            ScrollView {
+                VStack {
+                    ForEach(0..<100, id: \.self) { index in
+                        Text("Index: \(index)")
+                    }
+                }
+            }
+        }
     }
 }
 
